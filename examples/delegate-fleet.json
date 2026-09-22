@@ -1,0 +1,30 @@
+{
+  "version": "delegate-fleet.v1",
+  "lanes": {
+    "feature": {
+      "implementer": "opencode",
+      "model": "opencode/big-pickle",
+      "variant": "high"
+    },
+    "refactor": {
+      "implementer": "opencode",
+      "model": "opencode/big-pickle",
+      "variant": "normal"
+    },
+    "ui": {
+      "implementer": "opencode",
+      "model": "opencode/big-pickle",
+      "variant": "high"
+    },
+    "docs": {
+      "implementer": "opencode",
+      "model": "opencode/big-pickle",
+      "variant": "normal"
+    },
+    "performance": {
+      "implementer": "opencode",
+      "model": "opencode/big-pickle",
+      "variant": "high"
+    }
+  }
+}
