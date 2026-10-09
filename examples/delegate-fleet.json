@@ -3,27 +3,27 @@
   "lanes": {
     "feature": {
       "implementer": "opencode",
-      "model": "opencode/big-pickle",
+      "model": "opencode/nemotron-3-ultra-free",
       "variant": "high"
     },
     "refactor": {
       "implementer": "opencode",
-      "model": "opencode/big-pickle",
+      "model": "opencode/nemotron-3-ultra-free",
       "variant": "normal"
     },
     "ui": {
       "implementer": "opencode",
-      "model": "opencode/big-pickle",
+      "model": "opencode/nemotron-3-ultra-free",
       "variant": "high"
     },
     "docs": {
       "implementer": "opencode",
-      "model": "opencode/big-pickle",
+      "model": "opencode/nemotron-3-ultra-free",
       "variant": "normal"
     },
     "performance": {
       "implementer": "opencode",
-      "model": "opencode/big-pickle",
+      "model": "opencode/nemotron-3-ultra-free",
       "variant": "high"
     }
   }

@@ -47,7 +47,7 @@ Copy the default fleet config to your home directory:
 cp examples/delegate-fleet.json ~/.config/delegate-fleet.json
 ```
 
-This defines 5 lanes (feature, refactor, ui, docs, performance), all bound to OpenCode with the `grok-4.6` model.
+This defines 5 lanes (feature, refactor, ui, docs, performance), all bound to OpenCode with the `nemotron-3-ultra-free` model (1M context window, free tier).
 
 ### Customize if needed
 
@@ -62,11 +62,11 @@ Example:
 {
   "version": "delegate-fleet.v1",
   "lanes": {
-    "feature": { "implementer": "opencode", "model": "opencode/grok-4.6" },
-    "refactor": { "implementer": "opencode", "model": "opencode/grok-4.6" },
-    "ui": { "implementer": "opencode", "model": "opencode/grok-4.6" },
+    "feature": { "implementer": "opencode", "model": "opencode/nemotron-3-ultra-free" },
+    "refactor": { "implementer": "opencode", "model": "opencode/nemotron-3-ultra-free" },
+    "ui": { "implementer": "opencode", "model": "opencode/nemotron-3-ultra-free" },
     "docs": { "implementer": "claude", "model": "claude-sonnet-5" },
-    "performance": { "implementer": "opencode", "model": "opencode/grok-4.6" }
+    "performance": { "implementer": "opencode", "model": "opencode/nemotron-3-ultra-free" }
   }
 }
 ```

@@ -88,7 +88,7 @@ Claude proposed this architecture, user approved it. Changes were precise and sc
 
 ## Phase 4: Delegation to OpenCode
 
-**Model:** `opencode/grok-4.6`  
+**Model:** `opencode/nemotron-3-ultra-free` (1M context, free tier)  
 **Scope:** Code changes only (operational steps deferred to later)
 
 ### Implementation Brief (Sent to OpenCode)

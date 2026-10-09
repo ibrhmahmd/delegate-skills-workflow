@@ -3,7 +3,7 @@
 A structured, mandatory 7-phase workflow for software teams using Claude (planning/review) + OpenCode (implementation). Ensures every task follows a consistent, quality-gated process from issue creation through deployment.
 
 **Status:** Production-tested (used across multiple projects)  
-**Last Updated:** 2026-09-22
+**Last Updated:** 2026-10-10
 
 ## Quick Start
 
@@ -71,7 +71,7 @@ See [SETUP.md](SETUP.md#installed-skills) for the full list.
 
 ## Fleet Configuration
 
-The workflow is bound to a **fleet** — a set of 5 lanes (feature, refactor, ui, docs, performance), each assigned to an implementer. Default: all bound to OpenCode with `grok-4.6`.
+The workflow is bound to a **fleet** — a set of 5 lanes (feature, refactor, ui, docs, performance), each assigned to an implementer. Default: all bound to OpenCode with `nemotron-3-ultra-free` (1M context, free tier).
 
 You can customize this in `~/.config/delegate-fleet.json`. See [SETUP.md](SETUP.md#fleet-configuration) for details.
 

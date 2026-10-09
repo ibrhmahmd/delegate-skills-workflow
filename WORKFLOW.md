@@ -113,7 +113,7 @@ Use the appropriate delegate skill:
 Or invoke directly via shell:
 
 ```bash
-opencode run --model opencode/grok-4.6 --agent build \
+opencode run --model opencode/nemotron-3-ultra-free --agent build \
   --file /path/to/implementation-brief.md
 ```
 

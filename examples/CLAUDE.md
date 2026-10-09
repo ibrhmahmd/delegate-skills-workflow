@@ -7,7 +7,7 @@ applies in every project, not just where it was first set up.
 
 ## Fleet
 
-5 lanes, all bound to OpenCode (`opencode/grok-4.6`):
+5 lanes, all bound to OpenCode (`opencode/nemotron-3-ultra-free`, set in `~/.config/delegate-fleet.json`):
 `feature`, `refactor`, `ui`, `docs`, `performance`.
 
 No Cursor, no Codex — user works with Claude (orchestrator/planner/reviewer)
