@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who talks to whom, phase by phase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=Noto+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:   #f5f5f5;   /* white-smoke */
+      --color-ink:     #2d3142;   /* jet-black */
+      --color-muted:   #4f5d75;   /* blue-slate */
+      --color-accent:  #bf4520;   /* burnt-tangerine */
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', 'Noto Serif', 'Noto Serif KR', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+
+    .frame { max-width: 1200px; width: 100%; }
+    /* The SVG holds its readable width (min-width == the viewBox width, so the
+       type ramp is never silently scaled down). This wrapper lets a narrow
+       screen scroll the diagram instead of the whole page. */
+    .diagram-container { width: 100%; overflow-x: auto; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 1.5rem;
+    }
+
+    svg { width: 100%; min-width: 960px; display: block; }
+    /* Paper has no scrollbar, so the local scroller would clip instead of
+       scroll. Let the diagram scale down to the sheet: smaller but whole
+       beats sharp but cut off. Must come after the svg rule above - a media
+       query adds no specificity, so a later plain rule would win. */
+    @media print {
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Sequence · Delegate-Skills</p>
+    <h1>Who talks to whom, phase by phase</h1>
+
+    <!-- Replace workflow-sequence with a unique slug for this diagram before export. -->
+    <div class="diagram-container">
+      <svg viewBox="0 0 960 752" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="workflow-sequence-title workflow-sequence-desc">
+        <title id="workflow-sequence-title">Who talks to whom, phase by phase</title>
+        <desc id="workflow-sequence-desc">Sequence of messages between user, Claude, OpenCode and the issue tracker, including the review-and-fix loop that repeats until review passes.</desc>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/></marker>
+          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#bf4520"/></marker>
+          <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2e5aa8"/></marker>
+
+          <!-- OPTIONAL: dot-pattern background. Uncomment the <pattern> and the second <rect> below if you want the dotted paper look. -->
+          <!--
+          <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.9" fill="rgba(45,49,66,0.10)"/>
+          </pattern>
+          -->
+        </defs>
+
+        <rect width="100%" height="100%" fill="#f5f5f5"/>
+        <!-- <rect width="100%" height="100%" fill="url(#dots)" opacity="0.55"/> -->
+
+        <line x1="128" y1="128" x2="128" y2="696" stroke="#2d3142" stroke-opacity="0.22" stroke-dasharray="3,3"/>
+        <line x1="352" y1="128" x2="352" y2="696" stroke="#2d3142" stroke-opacity="0.22" stroke-dasharray="3,3"/>
+        <line x1="584" y1="128" x2="584" y2="696" stroke="#2d3142" stroke-opacity="0.22" stroke-dasharray="3,3"/>
+        <line x1="800" y1="128" x2="800" y2="696" stroke="#2d3142" stroke-opacity="0.22" stroke-dasharray="3,3"/>
+        <rect x="324" y="388" width="288" height="176" rx="4" fill="#2d3142" fill-opacity="0.03" stroke="#2d3142" stroke-opacity="0.22"/>
+        <rect x="324" y="388" width="44" height="16" rx="2" fill="#f5f5f5" stroke="#2d3142" stroke-opacity="0.22"/>
+        <text x="346" y="400" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.12em" fill="#4f5d75">LOOP</text>
+        <text x="336" y="420" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.04em" fill="#4f5d75">[until review passes]</text>
+        <path d="M128 176 H350" fill="none" stroke="#2e5aa8" stroke-width="1.25" marker-end="url(#arrow-link)"/>
+        <rect x="189" y="158" width="100" height="14" fill="#f5f5f5"/>
+        <text x="239" y="167" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#2e5aa8">TASK / BUG REPORT</text>
+        <path d="M354 212 H800" fill="none" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/>
+        <rect x="532" y="194" width="90" height="14" fill="#f5f5f5"/>
+        <text x="577" y="203" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#4f5d75">CREATE ISSUE #N</text>
+        <path d="M350 252 H128" fill="none" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/>
+        <rect x="176" y="234" width="127" height="14" fill="#f5f5f5"/>
+        <text x="239" y="243" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#4f5d75">CLARIFY + PLAN OPTIONS</text>
+        <path d="M128 288 H350" fill="none" stroke="#4f5d75" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+        <rect x="202" y="270" width="74" height="14" fill="#f5f5f5"/>
+        <text x="239" y="279" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#4f5d75">APPROVE PLAN</text>
+        <path d="M354 328 H584" fill="none" stroke="#2e5aa8" stroke-width="1.25" marker-end="url(#arrow-link)"/>
+        <rect x="427" y="310" width="84" height="14" fill="#f5f5f5"/>
+        <text x="469" y="319" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#2e5aa8">BRIEF · --FILE</text>
+        <path d="M584 364 H354" fill="none" stroke="#4f5d75" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+        <rect x="422" y="346" width="95" height="14" fill="#f5f5f5"/>
+        <text x="469" y="355" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#4f5d75">UNCOMMITTED DIFF</text>
+        <path d="M356 440 H388 Q396 440 396 448 V460 Q396 468 388 468 H358" fill="none" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/>
+        <rect x="404" y="449" width="105" height="14" fill="#f5f5f5"/>
+        <text x="409" y="458" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#4f5d75">RUN TESTS + REVIEW</text>
+        <path d="M354 500 H584" fill="none" stroke="#bf4520" stroke-width="1.5" marker-end="url(#arrow-accent)"/>
+        <rect x="416" y="482" width="105" height="14" fill="#f5f5f5"/>
+        <text x="469" y="491" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#bf4520">ITEMIZED FIX BRIEF</text>
+        <path d="M584 536 H354" fill="none" stroke="#4f5d75" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+        <rect x="411" y="518" width="116" height="14" fill="#f5f5f5"/>
+        <text x="469" y="527" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#4f5d75">NEW UNCOMMITTED DIFF</text>
+        <path d="M350 592 H128" fill="none" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/>
+        <rect x="194" y="574" width="90" height="14" fill="#f5f5f5"/>
+        <text x="239" y="583" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#4f5d75">FINDINGS + DIFF</text>
+        <path d="M128 628 H800" fill="none" stroke="#bf4520" stroke-width="1.5" marker-end="url(#arrow-accent)"/>
+        <rect x="411" y="610" width="105" height="14" fill="#f5f5f5"/>
+        <text x="464" y="619" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#bf4520">COMMIT · CLOSES #N</text>
+        <path d="M354 664 H800" fill="none" stroke="#4f5d75" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+        <rect x="527" y="646" width="100" height="14" fill="#f5f5f5"/>
+        <text x="577" y="655" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.06em" fill="#4f5d75">FOLLOW-UP TICKETS</text>
+        <rect x="56" y="72" width="144" height="56" rx="6" fill="#f5f5f5" stroke="#5a6580" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="66" y="88" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#4f5d75">HUMAN</text>
+        <text x="128" y="107" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">User</text>
+        <text x="128" y="121" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" fill="#4f5d75">approves · commits</text>
+        <rect x="280" y="72" width="144" height="56" rx="6" fill="#fff" stroke="#2d3142" stroke-width="1"/>
+        <text x="290" y="88" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#4f5d75">ORCHESTRATOR</text>
+        <text x="352" y="107" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">Claude</text>
+        <text x="352" y="121" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" fill="#4f5d75">plan · review</text>
+        <rect x="512" y="72" width="144" height="56" rx="6" fill="#fbe9e3" stroke="#bf4520" stroke-width="1.5"/>
+        <text x="522" y="88" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#bf4520">IMPLEMENTER</text>
+        <text x="584" y="107" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">OpenCode</text>
+        <text x="584" y="121" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" fill="#4f5d75">nemotron-3-ultra-free</text>
+        <rect x="728" y="72" width="144" height="56" rx="6" fill="#fff" stroke="#2d3142" stroke-width="1"/>
+        <text x="738" y="88" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#4f5d75">STORE</text>
+        <text x="800" y="107" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">Issue + Git</text>
+        <text x="800" y="121" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" fill="#4f5d75">tracker · repo</text>
+        <line x1="40" y1="712" x2="920" y2="712" stroke="#2d3142" stroke-opacity="0.15"/>
+        <line x1="40" y1="730" x2="62" y2="730" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/><text x="70" y="734" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#4f5d75">CALL</text>
+        <line x1="122" y1="730" x2="146" y2="730" stroke="#4f5d75" stroke-dasharray="5,4"/><text x="154" y="734" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#4f5d75">RETURN</text>
+        <line x1="218" y1="730" x2="242" y2="730" stroke="#bf4520" stroke-width="1.5"/><text x="250" y="734" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#4f5d75">FIX / LAND</text>
+        <line x1="338" y1="730" x2="360" y2="730" stroke="#2e5aa8" stroke-width="1.25"/><text x="368" y="734" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#4f5d75">HANDOFF</text>
+        
+
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

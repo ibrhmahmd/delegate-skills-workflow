@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Which skill runs in which phase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=Noto+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:   #f5f5f5;   /* white-smoke */
+      --color-ink:     #2d3142;   /* jet-black */
+      --color-muted:   #4f5d75;   /* blue-slate */
+      --color-accent:  #bf4520;   /* burnt-tangerine */
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', 'Noto Serif', 'Noto Serif KR', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+
+    .frame { max-width: 1200px; width: 100%; }
+    /* The SVG holds its readable width (min-width == the viewBox width, so the
+       type ramp is never silently scaled down). This wrapper lets a narrow
+       screen scroll the diagram instead of the whole page. */
+    .diagram-container { width: 100%; overflow-x: auto; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 1.5rem;
+    }
+
+    svg { width: 100%; min-width: 960px; display: block; }
+    /* Paper has no scrollbar, so the local scroller would clip instead of
+       scroll. Let the diagram scale down to the sheet: smaller but whole
+       beats sharp but cut off. Must come after the svg rule above - a media
+       query adds no specificity, so a later plain rule would win. */
+    @media print {
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Map · Delegate-Skills</p>
+    <h1>Which skill runs in which phase</h1>
+
+    <!-- Replace workflow-skills with a unique slug for this diagram before export. -->
+    <div class="diagram-container">
+      <svg viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="workflow-skills-title workflow-skills-desc">
+        <title id="workflow-skills-title">Which skill runs in which phase</title>
+        <desc id="workflow-skills-desc">Map of the seven workflow phases, in order, with the skills used in each and the user-only operational work that is kept out of delegation.</desc>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/></marker>
+          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#bf4520"/></marker>
+          <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2e5aa8"/></marker>
+
+          <!-- OPTIONAL: dot-pattern background. Uncomment the <pattern> and the second <rect> below if you want the dotted paper look. -->
+          <!--
+          <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.9" fill="rgba(45,49,66,0.10)"/>
+          </pattern>
+          -->
+        </defs>
+
+        <rect width="100%" height="100%" fill="#f5f5f5"/>
+        <!-- <rect width="100%" height="100%" fill="url(#dots)" opacity="0.55"/> -->
+
+        <path d="M136 128 V140" fill="none" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/>
+        <path d="M136 180 V192" fill="none" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/>
+        <path d="M136 232 V244" fill="none" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/>
+        <path d="M136 284 V296" fill="none" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/>
+        <path d="M136 336 V348" fill="none" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/>
+        <path d="M136 388 V400" fill="none" stroke="#4f5d75" stroke-width="1.25" marker-end="url(#arrow)"/>
+        <rect x="40" y="88" width="232" height="40" rx="6" fill="#fff" stroke="#2d3142" stroke-width="1"/>
+        <text x="52" y="105" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">01 · Issue Creation</text>
+        <text x="52" y="119" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#4f5d75">CLAUDE</text>
+        <rect x="296" y="94" width="96" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="344.0" y="112" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">GitHub Issues</text>
+        <rect x="400" y="94" width="52" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="426.0" y="112" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">Linear</text>
+        <rect x="460" y="94" width="72" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="496.0" y="112" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">ISSUES.md</text>
+        <rect x="40" y="140" width="232" height="40" rx="6" fill="#fff" stroke="#2d3142" stroke-width="1"/>
+        <text x="52" y="157" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">02 · Analysis &amp; Planning</text>
+        <text x="52" y="171" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#4f5d75">CLAUDE</text>
+        <rect x="296" y="146" width="112" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="352.0" y="164" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$domain-modeling</text>
+        <rect x="416" y="146" width="112" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="472.0" y="164" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$codebase-design</text>
+        <rect x="536" y="146" width="76" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="574.0" y="164" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$wayfinder</text>
+        <rect x="620" y="146" width="64" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="652.0" y="164" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$to-spec</text>
+        <rect x="692" y="146" width="120" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="752.0" y="164" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$decision-mapping</text>
+        <rect x="820" y="146" width="76" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="858.0" y="164" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$wait-what</text>
+        <rect x="40" y="192" width="232" height="40" rx="6" fill="#fff" stroke="#2d3142" stroke-width="1"/>
+        <text x="52" y="209" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">03 · Implementation Planning</text>
+        <text x="52" y="223" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#4f5d75">CLAUDE + USER</text>
+        <rect x="296" y="198" width="148" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="370.0" y="216" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$request-refactor-plan</text>
+        <rect x="452" y="198" width="196" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="550.0" y="216" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$improve-codebase-architecture</text>
+        <rect x="656" y="198" width="40" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="676.0" y="216" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$tdd</text>
+        <rect x="40" y="244" width="232" height="40" rx="6" fill="#fbe9e3" stroke="#bf4520" stroke-width="1.5"/>
+        <text x="52" y="261" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">04 · Delegate to OpenCode</text>
+        <text x="52" y="275" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#bf4520">OPENCODE</text>
+        <rect x="296" y="250" width="120" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="356.0" y="268" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$feature-delegate</text>
+        <rect x="424" y="250" width="124" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="486.0" y="268" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$refactor-delegate</text>
+        <rect x="556" y="250" width="88" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="600.0" y="268" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$ui-delegate</text>
+        <rect x="652" y="250" width="100" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="702.0" y="268" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$docs-delegate</text>
+        <rect x="760" y="250" width="144" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="832.0" y="268" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$performance-delegate</text>
+        <rect x="40" y="296" width="232" height="40" rx="6" fill="#fff" stroke="#2d3142" stroke-width="1"/>
+        <text x="52" y="313" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">05 · Code Review</text>
+        <text x="52" y="327" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#4f5d75">CLAUDE</text>
+        <rect x="296" y="302" width="88" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="340.0" y="320" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$code-review</text>
+        <rect x="392" y="302" width="72" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="428.0" y="320" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$grill-me</text>
+        <rect x="40" y="348" width="232" height="40" rx="6" fill="#fff" stroke="#2d3142" stroke-width="1"/>
+        <text x="52" y="365" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">06 · Merge &amp; Close</text>
+        <text x="52" y="379" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#4f5d75">USER</text>
+        <rect x="296" y="354" width="120" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="356.0" y="372" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">commit: closes #N</text>
+        <rect x="40" y="400" width="232" height="40" rx="6" fill="#fff" stroke="#2d3142" stroke-width="1"/>
+        <text x="52" y="417" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">07 · Tracking &amp; Follow-up</text>
+        <text x="52" y="431" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#4f5d75">CLAUDE</text>
+        <rect x="296" y="406" width="80" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="336.0" y="424" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$to-tickets</text>
+        <rect x="384" y="406" width="80" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="424.0" y="424" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$adr-author</text>
+        <rect x="472" y="406" width="64" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="504.0" y="424" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$handoff</text>
+        <rect x="544" y="406" width="56" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="572.0" y="424" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$to-prd</text>
+        <line x1="40" y1="452" x2="920" y2="452" stroke="#2d3142" stroke-opacity="0.25" stroke-dasharray="4,3"/>
+        <rect x="40" y="464" width="232" height="40" rx="6" fill="#f5f5f5" stroke="#5a6580" stroke-dasharray="4,3"/>
+        <text x="52" y="481" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600" fill="#2d3142">Operational work</text>
+        <text x="52" y="495" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" letter-spacing="0.08em" fill="#4f5d75">USER-ONLY · NOT DELEGATED</text>
+        <rect x="296" y="470" width="64" height="28" rx="4" fill="#ebecee" stroke="#2d3142" stroke-opacity="0.35" stroke-width="0.8"/>
+        <text x="328" y="488" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#2d3142">$wizard</text>
+        <text x="372" y="488" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#4f5d75">credentials · cloud cron · DNS</text>
+        <line x1="40" y1="528" x2="920" y2="528" stroke="#2d3142" stroke-opacity="0.15"/>
+        <rect x="40" y="540" width="20" height="12" rx="3" fill="#fff" stroke="#2d3142"/><text x="68" y="550" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#4f5d75">PHASE</text>
+        <rect x="126" y="540" width="20" height="12" rx="3" fill="#fbe9e3" stroke="#bf4520" stroke-width="1.5"/><text x="154" y="550" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#4f5d75">DELEGATION</text>
+        <rect x="242" y="540" width="20" height="12" rx="3" fill="#f5f5f5" stroke="#5a6580" stroke-dasharray="4,3"/><text x="270" y="550" font-family="'Geist Mono', ui-monospace, monospace" font-size="10" fill="#4f5d75">USER-ONLY</text>
+        
+
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
